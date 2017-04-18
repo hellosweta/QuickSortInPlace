@@ -27,7 +27,7 @@ class QuickSort
     i = pivot_idx + 1
     partition_idx = pivot_idx
     while i < start + length
-      if prc.call(array[pivot_idx], array[i]) == 1
+      if prc.call(array[pivot_idx], array[i]) >= 0
         if i > partition_idx
           array[i], array[partition_idx + 1] = array[partition_idx + 1], array[i]
         end
