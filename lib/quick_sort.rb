@@ -15,10 +15,10 @@ class QuickSort
   def self.sort2!(array, start = 0, length = array.length, &prc)
     prc ||= Proc.new { | el1, el2 | el1 <=> el2 }
     return array if length <= 1
-    partition_idx = QuickSort.partition(array, start, length, &prc)
+    partition_idx = self.partition(array, start, length, &prc)
     array[start], array[partition_idx] = array[partition_idx], array[start]
-    QuickSort.sort2!(array, 0, (partition_idx - start))
-    QuickSort.sort2!(array, (partition_idx + 1), (length - partition_idx - 1))
+    sort2!(array, start, (partition_idx - start), &prc)
+    sort2!(array, (partition_idx + 1), (length - partition_idx - 1), &prc)
   end
 
   def self.partition(array, start, length, &prc)
